@@ -3,7 +3,9 @@ __date__  = '2018.Sept.30'
 
 RIGHT, LEFT, UP, DOWN = (1, 0), (-1, 0), (0, 1), (0, -1)
 
-
+'''
+坐标xy，沿direction走side步，返回轨迹coordination
+'''
 def move_by_direction(x, y, direction, side):
     dx, dy = direction
 
@@ -15,7 +17,9 @@ def move_by_direction(x, y, direction, side):
 
     return coordination
 
-
+'''
+从00，走total_step步，返回所走轨迹
+'''
 def move_by_sprial(total_step=0):
     x = y = 0  # start place is (0, 0)
     side = 0
@@ -46,7 +50,7 @@ def draw_sprial(steps):
     21
     """
     coordination = list(enumerate(move_by_sprial(steps)))  # change [(0, 0), (1, 0), ..] to [(0, (0, 0), (1, (1, 0)))]
-
+    c_temp = coordination
     def sort_from_left_upper_to_right_down(index_x_y): return index_x_y[1][1], -index_x_y[1][0]
     # this function is cascade sort, ref: https://stackoverflow.com/questions/4233476/sort-a-list-by-multiple-attributes
 
@@ -68,10 +72,12 @@ assert get_sprial_distance(1) == 0
 assert get_sprial_distance(12) == 3
 assert get_sprial_distance(23) == 2
 assert get_sprial_distance(1024) == 31
-'''
+
 
 draw_sprial(10)
 print('*'*8)
 draw_sprial(100)
 print('*'*8)
 draw_sprial(1000)
+'''
+draw_sprial(10)
